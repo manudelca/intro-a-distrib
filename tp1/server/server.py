@@ -2,8 +2,7 @@ import socket
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-sock.bind((socket.gethostname(), 8080))
-print(socket.gethostname())
+sock.bind(("127.0.0.1", 8081))
 sock.listen(5)
 
 while True:
@@ -13,6 +12,7 @@ while True:
         break
     while True:
         data = conn.recv(1024)
+        print(data.decode())
         if len(data) <= 0:
             break
         conn.send(data)
